@@ -4,10 +4,31 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  createHttpLink,
+  gql
+} from "@apollo/client";
+
+
+ 
+
+const client = new ApolloClient({
+  uri: 'https://pangaea-interviews.now.sh/api/graphql',
+  cache: new InMemoryCache()
+});
+
+
+
+
 ReactDOM.render(
-  <React.StrictMode>
+  <ApolloProvider client={client}>
     <App />
-  </React.StrictMode>,
+    </ApolloProvider>,
   document.getElementById('root')
 );
 
