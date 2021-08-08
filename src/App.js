@@ -43,10 +43,27 @@ function App() {
 
 
 
+ <div className="sub-head">
+ 
 
-<div className="sub-head">
-  
+
+<div className="sub-head-container-1">
+<h1>All Products</h1>
+<p>A 360o look at Lumin</p>
 </div>
+
+
+
+
+
+<div className="sub-head-container-2">
+ 
+</div>
+ 
+
+</div>
+
+
 
 
 
