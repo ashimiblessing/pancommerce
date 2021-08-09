@@ -2,25 +2,35 @@ import brand from './lumin.png';
 import cart from './cart.png';
 import './App.css';
 
-
-
+import { useQuery, gql } from '@apollo/client';
+ 
+ 
+const DEFAULT_QUERY = gql`
+  {
+    products
+  {
+    title,
+    price (currency: USD),
+    id,
+    image_url,
+    
+    
+  }
+  }
+`;
 
 
 function App() {
 
-
-
-
-
+ 
+  const { data } = useQuery(DEFAULT_QUERY);
 
 
 
 
 
   return (
-
  
-
     <div className="App">
     <header>
 
@@ -86,21 +96,38 @@ function App() {
 <div className="grid-contain">
 <div class="grid">
   
-  <div class="module">1</div>
-  <div class="module">2</div>
-  <div class="module">3</div>
-  <div class="module">4</div>
-  <div class="module">5</div>
-  <div class="module">6</div>
-  <div class="module">7</div>
-  <div class="module">8</div>
-  <div class="module">9</div>
-  <div class="module">10</div>
-  <div class="module">11</div>
-  <div class="module">12</div>
-  <div class="module">13</div>
-  <div class="module">14</div>
-  <div class="module">15</div>
+
+{data && (
+        <>
+          {data.products.map((product) => (
+
+            <div className="module">
+              <div className="product-link" >
+              <img src={product.image_url} alt={product.title} />
+             
+              <h3 className="product-title">{product.title}</h3>
+              <p className="product-price">${product.price}</p>
+
+              <button className="product-button">Add to Cart</button>
+              </div>
+
+             
+            
+            </div>
+
+ 
+          ))}
+        </>
+      )}
+
+
+
+ 
+
+
+
+
+
 </div>
 
 </div>
@@ -118,8 +145,7 @@ function App() {
 
 
     </div>
-
-
+   
  
   );
 }
