@@ -9,9 +9,7 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
-  createHttpLink,
-  gql
+  
 } from "@apollo/client";
 
 
